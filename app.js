@@ -9,6 +9,18 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+//helpers de hbs
+const moment = require('moment');
+moment.locale('es');
+hbs.registerHelper('date', (content)=>{
+  return moment().fromNow();
+})
+hbs.registerHelper('money', (content)=>{
+  return `$ ${content}.00`;
+});
+hbs.registerHelper('json', (content)=>{
+  return JSON.stringify(content)
+});
 
 mongoose.Promise = Promise;
 mongoose
